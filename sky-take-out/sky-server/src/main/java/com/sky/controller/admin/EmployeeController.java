@@ -119,9 +119,34 @@ public class EmployeeController {
         log.info("启用禁用员工账号{},{}",status,id);
         employeeService.startOrStop(status,id);
         return null;
+    }
+
+    /**
+     * 根据ID查询员工信息
+     * @param id
+     * @return
+     */
+    @GetMapping("{id}")
+    @ApiOperation("根据ID查看员工")
+    public Result<Employee> getById (@PathVariable Long id){
+       Employee employee= employeeService.getById(id);
+       return Result.success(employee);
 
 
     }
 
+    /**
+     * 修改员工参数
+     * @param employeeDTO
+     * @return
+     */
+    @PutMapping
+    @ApiOperation("修改员工参数")
+    public Result update (@RequestBody EmployeeDTO employeeDTO){
+        log.info("编辑员工参数:{}",employeeDTO);
+        employeeService.update(employeeDTO);
+        return Result.success();
+
+    }
 
 }
