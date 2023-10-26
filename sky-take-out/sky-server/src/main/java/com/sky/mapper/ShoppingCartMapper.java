@@ -45,4 +45,10 @@ public interface ShoppingCartMapper {
      * @param shoppingCartDTO
      */
     void delete(ShoppingCartDTO shoppingCartDTO);
+
+    /**
+     * 再来一单的订单批量添加
+     * @param shoppingCartList
+     */
+    void insertBatch(List<ShoppingCart> shoppingCartList);
 }
